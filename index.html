@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Rental Platform - Project Quote</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0.75in;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: white;
+        }
+        
+        .container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2c5aa0;
+            padding-bottom: 20px;
+        }
+        
+        .header h1 {
+            color: #2c5aa0;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .header h2 {
+            color: #666;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            color: #2c5aa0;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-left: 4px solid #2c5aa0;
+            padding-left: 12px;
+        }
+        
+        .team-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .team-info ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        
+        .team-info li {
+            margin-bottom: 8px;
+        }
+        
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        .hours-table th {
+            background: #2c5aa0;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #ddd;
+        }
+        
+        .hours-table td {
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .hours-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .hours-table .total-row {
+            background: #e9ecef !important;
+            font-weight: bold;
+        }
+        
+        .hours-table .grand-total {
+            background: #2c5aa0 !important;
+            color: white !important;
+            font-weight: bold;
+        }
+        
+        .pricing-box {
+            background: #f8f9fa;
+            border: 2px solid #2c5aa0;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .cost-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 3px 0;
+        }
+        
+        .cost-line.section-header {
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .cost-line.total {
+            border-top: 2px solid #2c5aa0;
+            margin-top: 15px;
+            padding-top: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #2c5aa0;
+        }
+        
+        .features-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-group {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .feature-group h4 {
+            color: #28a745;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .feature-group h4::before {
+            content: "✅ ";
+            margin-right: 5px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 3px 0;
+            font-size: 14px;
+        }
+        
+        .feature-list li::before {
+            content: "• ";
+            color: #2c5aa0;
+            margin-right: 5px;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .summary-item {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .summary-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c5aa0;
+            display: block;
+        }
+        
+        .summary-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        @media print {
+            .container {
+                padding: 0;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Warehouse Idle Items Rental Platform</h1>
+            <h2>Project Development Quote & Estimation</h2>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Development Team Structure</div>
+            <div class="team-info">
+                <ul>
+                    <li><strong>1 Backend Developer:</strong> Node.js, APIs, database design</li>
+                    <li><strong>2 Mobile Developers:</strong> React Native development</li>
+                    <li><strong>1 Frontend Developer:</strong> React.js web application</li>
+                    <li><strong>Total Team Size:</strong> 4 developers working simultaneously</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Daily Working Hours</div>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <span class="summary-number">12</span>
+                    <div class="summary-label">Hours per day per developer</div>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-number">48</span>
+                    <div class="summary-label">Total development hours per day</div>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-number">20</span>
+                    <div class="summary-label">Estimated timeline (weeks)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Development Hours Summary</div>
+            <table class="hours-table">
+                <thead>
+                    <tr>
+                        <th>Module</th>
+                        <th>Hours</th>
+                        <th>Team Distribution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Backend Infrastructure</td>
+                        <td>250</td>
+                        <td>Backend Developer</td>
+                    </tr>
+                    <tr>
+                        <td>Web Application</td>
+                        <td>180</td>
+                        <td>Frontend Developer</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Applications</td>
+                        <td>220</td>
+                        <td>2 Mobile Developers</td>
+                    </tr>
+                    <tr>
+                        <td>Advanced Features</td>
+                        <td>150</td>
+                        <td>All team members</td>
+                    </tr>
+                    <tr>
+                        <td>Integration & Testing</td>
+                        <td>100</td>
+                        <td>All team members</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Base Total</strong></td>
+                        <td><strong>900</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Buffer Time</td>
+                        <td>40</td>
+                        <td></td>
+                    </tr>
+                    <tr class="grand-total">
+                        <td><strong>Grand Total</strong></td>
+                        <td><strong>940</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Pricing Structure</div>
+            <div class="pricing-box">
+                <div class="cost-line section-header">
+                    <span>Development Cost</span>
+                </div>
+                <div class="cost-line">
+                    <span>• Total Development Hours: 940 hours</span>
+                </div>
+                <div class="cost-line">
+                    <span>• Development Rate: Market competitive rate</span>
+                </div>
+                <div class="cost-line">
+                    <span>• Base Development Cost</span>
+                    <span><strong>$9,400</strong></span>
+                </div>
+
+                <div class="cost-line section-header">
+                    <span>Project Management & Overhead</span>
+                </div>
+                <div class="cost-line">
+                    <span>• Project coordination and management</span>
+                    <span>$1,200</span>
+                </div>
+                <div class="cost-line">
+                    <span>• Quality assurance and testing</span>
+                    <span>$800</span>
+                </div>
+                <div class="cost-line">
+                    <span>• Documentation and deployment</span>
+                    <span>$600</span>
+                </div>
+                <div class="cost-line">
+                    <span>• Infrastructure setup and configuration</span>
+                    <span>$400</span>
+                </div>
+
+                <div class="cost-line section-header">
+                    <span>Risk Buffer & Contingency</span>
+                </div>
+                <div class="cost-line">
+                    <span>• Contingency for scope changes</span>
+                    <span>$700</span>
+                </div>
+                <div class="cost-line">
+                    <span>• Technical risk buffer</span>
+                    <span>$600</span>
+                </div>
+
+                <div class="cost-line total">
+                    <span>Total Project Investment</span>
+                    <span>$13,700</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">What's Included</div>
+            <div class="features-section">
+                <div class="feature-group">
+                    <h4>Complete Platform Development</h4>
+                    <ul class="feature-list">
+                        <li>Fully functional backend API system</li>
+                        <li>Responsive web application</li>
+                        <li>Native mobile apps for iOS and Android</li>
+                        <li>Comprehensive admin dashboard</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4>Key Features</h4>
+                    <ul class="feature-list">
+                        <li>Multi-vendor marketplace functionality</li>
+                        <li>Advanced booking and rental system</li>
+                        <li>Integrated payment processing</li>
+                        <li>Real-time notifications</li>
+                        <li>Analytics and reporting tools</li>
+                        <li>User management and KYC integration</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4>Technical Deliverables</h4>
+                    <ul class="feature-list">
+                        <li>Complete source code with documentation</li>
+                        <li>Database design and setup</li>
+                        <li>API documentation</li>
+                        <li>Deployment guides</li>
+                        <li>User manuals for all user types</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4>Support & Warranty</h4>
+                    <ul class="feature-list">
+                        <li>30 days of post-launch bug fixes</li>
+                        <li>Technical support during deployment</li>
+                        <li>Training for admin panel usage</li>
+                        <li>Performance optimization recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
